@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Standings — Codeforces Round 1130</title>
+<link rel="stylesheet" href="assets/cf.css">
+<script src="assets/shell.js"></script>
+</head>
+<body data-page="contests" data-live="off">
+<div id="top"></div>
+
+<section class="cbar"><div class="wrap">
+  <div class="cbar-top">
+    <h1 class="cbar-name"><a href="contests.html">Codeforces Round 1130 (Div. 1 + Div. 2)</a></h1>
+    <div class="phase">
+      <span>Contest is running</span>
+      <span class="bar"><i style="width:46.5%"></i></span>
+      <b data-left="4813">01:20:13</b>
+    </div>
+  </div>
+  <nav class="subnav" aria-label="Contest">
+    <a href="problem.html">Problems</a>
+    <a href="#">Submit code</a>
+    <a href="#">My submissions</a>
+    <a href="#">Status</a>
+    <a class="on" href="standings.html">Standings</a>
+    <a href="#">Custom test</a>
+    <span class="meta">Rated · 21,348 participants · pretests until 20:05</span>
+  </nav>
+</div></section>
+
+<main class="wrap page" style="padding-top:0">
+  <div class="st-tools">
+    <h2 class="page-title">Standings</h2>
+    <span class="page-sub tnum">updated 12 s ago</span>
+    <label class="switch push"><input type="checkbox"><span class="track"></span>Unofficial</label>
+    <label class="switch"><input type="checkbox"><span class="track"></span>Friends only</label>
+    <label class="switch"><input type="checkbox" checked><span class="track"></span>Predicted Δ</label>
+    <select class="select" aria-label="Country"><option>All countries</option></select>
+    <input class="input" placeholder="Find participant" aria-label="Find participant">
+  </div>
+
+  <div class="st-box">
+    <table class="st">
+      <thead id="head"></thead>
+      <tbody id="rows"></tbody>
+      <tfoot id="foot"></tfoot>
+    </table>
+  </div>
+
+  <div class="st-foot">
+    <span class="tnum">Points drop every minute; each rejected attempt costs 50. Δ is a prediction and changes until the end of system testing.</span>
+    <nav class="pager"><span class="on">1</span><a href="#">2</a><a href="#">3</a><span>…</span><a href="#">214</a><a href="#">Next »</a></nav>
+  </div>
+</main>
+
+<div id="bottom"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const P = [['A', 250], ['B', 500], ['C', 1000], ['D', 1500], ['E', 2000], ['F', 2500], ['G', 3000], ['H', 3500]];
+  // cell: minute | [minute, rejected] | -rejected | '?' (testing) | null
+  const ROWS = [
+    ['obsidian',     [1, 0], +12, [2, 4, 8, 15, 27, [49, 1], -1, null]],
+    ['noriko',       [0, 0], +31, [3, 5, 10, 18, 33, 58, null, null]],
+    ['mod998244353', [0, 0], +27, [2, 6, 11, 17, 31, [66, 2], null, null]],
+    ['eulertour',    [0, 0], -4,  [3, 6, 12, 22, 35, -2, null, null]],
+    ['hikari_n',     [2, 0], +58, [3, 7, 13, 24, 41, null, null, null]],
+    ['petrichor',    [0, 0], -9,  [4, 7, 15, 26, 44, -1, null, null]],
+    ['soyuz',        [0, 0], +19, [2, 5, 14, 31, 47, '?', null, null]],
+    ['lattice',      [0, 0], -16, [4, 9, 16, 29, [52, 1], null, null, null]],
+    ['monotone',     [0, 0], +6,  [3, 8, 19, 33, 58, null, null, null]],
+    ['frostbyte',    [1, 1], -21, [5, 9, 17, 27, [61, 3], null, null, null]],
+    ['jupiterian',   [0, 0], +44, [4, 10, 21, 37, 63, null, null, null]],
+    ['centroid',     [0, 0], +8,  [3, 8, 18, 35, 66, null, null, null]],
+    ['kotobuki',     [0, 0], +37, [4, 11, 23, 42, 64, null, null, null]],
+    ['dmitri_v',     [0, 0], +96, [3, 7, 15, [39, 1], [67, 1], null, null, null]],
+    ['tetra',        [0, 0], -38, [6, 12, 22, 45, '?', null, null, null]],
+    ['kruskal_fan',  [0, 0], +41, [4, 10, 26, 47, null, null, null, null]],
+    ['nanami',       [0, 0], -12, [5, 13, 29, 51, null, null, null, null]],
+    ['umbrella',     [0, 0], +88, [4, 9, 24, [58, 1], null, null, null, null]],
+    ['pskov_r',      [0, 0], -3,  [5, 12, 31, 60, -1, null, null, null]],
+    ['yoshida_k',    [1, 0], +23, [6, 14, 27, [68, 2], null, null, null, null]],
+  ];
+  const ME = ['lexmin', [0, 0], -61, [6, 23, -1, null, null, null, null, null], 7804];
+
+  const pad = CF.pad;
+  const points = (max, m, w) => Math.max(Math.round(max * 0.3), max - Math.floor(max * m / 250) - 50 * w);
+  const cell = (c, max) => {
+    if (c == null) return '<td class="c"></td>';
+    if (c === '?') return '<td class="c" title="Testing on pretests"><span class="pend">?</span><span class="t">testing</span></td>';
+    if (typeof c === 'number' && c < 0) return `<td class="c"><span class="fail">−${-c}</span></td>`;
+    const [m, w] = Array.isArray(c) ? c : [c, 0];
+    return `<td class="c" title="${w ? `${w} rejected before` : 'First try'}"><span class="pts">${points(max, m, w)}</span><span class="t">${pad(Math.floor(m / 60))}:${pad(m % 60)}</span></td>`;
+  };
+  const score = ([, [hp, hm], , cells]) => cells.reduce((s, c, i) => {
+    if (c == null || c === '?' || (typeof c === 'number' && c < 0)) return s;
+    const [m, w] = Array.isArray(c) ? c : [c, 0];
+    return s + points(P[i][1], m, w);
+  }, 0) + 100 * hp - 50 * hm;
+  const hacks = ([hp, hm]) => hp || hm ? `${hp ? `<span class="plus">+${hp}</span>` : ''}${hp && hm ? ' : ' : ''}${hm ? `<span class="minus">−${hm}</span>` : ''}` : '';
+  const delta = d => `<td class="pd"><span class="delta ${d > 0 ? 'pos' : 'neg'}">${d > 0 ? '+' : '−'}${Math.abs(d)}</span></td>`;
+  const row = (r, rank, cls = '') => `
+    <tr class="${cls}">
+      <td class="rk">${rank.toLocaleString('en-US')}</td>
+      <td class="who"><a class="u">${r[0]}</a>${cls === 'you' ? '<span class="sub">you</span>' : ''}</td>
+      <td class="sc">${score(r).toLocaleString('en-US')}</td>
+      <td class="hk">${hacks(r[1])}</td>
+      ${r[3].map((c, i) => cell(c, P[i][1])).join('')}
+      ${delta(r[2])}
+    </tr>`;
+
+  document.getElementById('head').innerHTML = `<tr>
+    <th class="rk">#</th><th class="who">Who</th><th class="sc">=</th><th class="hk">Hacks</th>
+    ${P.map(([l, v]) => `<th class="p"><a href="problem.html">${l}</a><small>${v}</small></th>`).join('')}
+    <th class="pd">Δ</th></tr>`;
+
+  const sorted = [...ROWS].sort((a, b) => score(b) - score(a));
+  document.getElementById('rows').innerHTML = row(ME, ME[4], 'you') + sorted.map((r, i) => row(r, i + 1)).join('');
+  CF.decorate(document.getElementById('rows'));
+
+  const ACC = [19402, 15730, 7214, 1503, 422, 61, 0, 0];
+  const TRI = [20511, 18066, 11980, 4812, 1610, 402, 87, 12];
+  const f = n => n.toLocaleString('en-US');
+  document.getElementById('foot').innerHTML = `
+    <tr><td class="lbl" colspan="4">Accepted <span class="muted">/ tried</span></td>
+      ${ACC.map((a, i) => `<td class="c"><span class="acc">${f(a)}</span><span class="tri">${f(TRI[i])}</span><div class="bar"><i style="width:${(a / TRI[i] * 100).toFixed(1)}%"></i></div></td>`).join('')}
+      <td></td></tr>`;
+});
+</script>
+</body>
+</html>

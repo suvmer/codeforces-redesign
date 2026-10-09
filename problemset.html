@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Problemset — Codeforces</title>
+<link rel="stylesheet" href="assets/cf.css">
+<script src="assets/shell.js"></script>
+</head>
+<body data-page="problemset">
+<div id="top"></div>
+
+<main class="wrap page">
+  <div class="cols">
+    <div>
+      <div class="page-head">
+        <h1 class="page-title">Problemset</h1>
+        <span class="page-sub tnum">4,143 problems match</span>
+        <a class="btn push" href="problem.html" data-icon="shuffle">Random unsolved</a>
+      </div>
+      <div class="subnav-line">
+        <nav class="subnav" aria-label="Problemset">
+          <a class="on" href="problemset.html">Problems</a>
+          <a href="#">Submit code</a>
+          <a href="#">Status</a>
+          <a href="#">Standings</a>
+          <a href="#">Custom test</a>
+        </nav>
+      </div>
+
+      <div class="ps-tools">
+        <input class="input" placeholder="Name or ID, e.g. 2304D" aria-label="Find problem">
+        <div class="applied">
+          <span class="tag on tnum">1200 – 2400 <span class="x">×</span></span>
+          <span class="tag on">5 contest types <span class="x">×</span></span>
+        </div>
+        <select class="select push" aria-label="Sort"><option>Newest first</option><option>Most solved</option><option>Easiest first</option></select>
+      </div>
+
+      <div class="box">
+        <table class="tbl ps">
+          <thead><tr><th aria-label="Status"></th><th>#</th><th>Name</th><th class="num">Difficulty</th><th class="num">Solved</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+
+      <div class="st-foot">
+        <span class="tnum">1–20 of 4,143</span>
+        <nav class="pager"><span class="on">1</span><a href="#">2</a><a href="#">3</a><a href="#">4</a><span>…</span><a href="#">208</a><a href="#">Next »</a></nav>
+      </div>
+    </div>
+
+    <aside class="aside">
+      <section class="box">
+        <h3 class="cap">Filter problems <a class="cap-x" href="#">Reset</a></h3>
+        <div class="fgroup">
+          <div class="label">Difficulty <span class="tnum">1200 – 2400</span></div>
+          <div class="drange"><input class="input" value="1200" aria-label="From"><span class="muted">—</span><input class="input" value="2400" aria-label="To"></div>
+          <div class="dstrip" id="dstrip"></div>
+        </div>
+        <div class="fgroup">
+          <div class="label">Tags <span>none selected</span></div>
+          <input class="input" placeholder="Add a tag" aria-label="Add a tag">
+          <div class="tags" style="margin-top:10px">
+            <a class="tag" href="#">dp</a><a class="tag" href="#">greedy</a><a class="tag" href="#">math</a><a class="tag" href="#">graphs</a>
+            <a class="tag" href="#">data structures</a><a class="tag" href="#">binary search</a><a class="tag" href="#">constructive algorithms</a>
+            <a class="tag" href="#">strings</a><a class="tag" href="#">number theory</a><a class="tag" href="#">trees</a><a class="tag" href="#">bitmasks</a>
+          </div>
+          <label class="check" style="margin-top:12px"><input type="checkbox"> Combine tags by OR</label>
+        </div>
+        <div class="fgroup">
+          <div class="label">Contest type</div>
+          <div class="tags">
+            <a class="tag on" href="#">Div. 1</a><a class="tag on" href="#">Div. 2</a><a class="tag on" href="#">Div. 1 + 2</a><a class="tag on" href="#">Educational</a>
+            <a class="tag on" href="#">Global</a><a class="tag" href="#">Div. 3</a><a class="tag" href="#">Div. 4</a><a class="tag" href="#">Kotlin Heroes</a>
+          </div>
+        </div>
+        <div class="fgroup fstack">
+          <label class="switch"><input type="checkbox"><span class="track"></span>Hide solved problems</label>
+          <label class="switch"><input type="checkbox"><span class="track"></span>Hide tags of unsolved problems</label>
+        </div>
+      </section>
+
+      <section class="box">
+        <h3 class="cap">Your progress in this range</h3>
+        <div class="cov-sum"><b class="tnum">898</b> of 4,143 solved</div>
+        <div class="cov" id="cov"></div>
+      </section>
+
+      <section class="box">
+        <h3 class="cap">Attempted, not solved</h3>
+        <ul class="attempts">
+          <li><span class="pid">2304E</span><a class="nm" href="problem.html">Gift Wrapping</a><span class="rej tnum">−3</span></li>
+          <li><span class="pid">2301E</span><a class="nm" href="problem.html">Lamps on a Ring</a><span class="rej tnum">−1</span></li>
+          <li><span class="pid">2299C</span><a class="nm" href="problem.html">Minimum Excluded Path</a><span class="rej tnum">−2</span></li>
+          <li><span class="pid">2276D</span><a class="nm" href="problem.html">Prefix XOR Queries</a><span class="rej tnum">−1</span></li>
+        </ul>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<div id="bottom"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const { rankOf, colorVar, ic } = CF;
+  // id, name, tags, difficulty, solved by, my status
+  const P = [
+    ['2304E', 'Gift Wrapping', 'binary search, greedy, sortings', 2100, 2931, 'tried'],
+    ['2304D', 'Palindromic Paths Again', 'dp, strings', 1900, 5804],
+    ['2304C', 'Nearest Bus Stop', 'implementation, math', 1500, 14219, 'solved'],
+    ['2303E', 'Sum over Subarrays', 'combinatorics, math', 2300, 1203],
+    ['2303D', 'Robot on a Grid', 'dfs and similar, graphs', 1800, 6551, 'solved'],
+    ['2303C', 'Mex Game', 'games, greedy', 1400, 16920, 'solved'],
+    ['2302D', 'Fence Painting', 'binary search, data structures', 2000, 3880],
+    ['2302C', 'Two Arrays and a Swap', 'constructive algorithms, sortings', 1600, 9102, 'solved'],
+    ['2302B', 'Prefix Flips', 'greedy, strings', 1200, 19664, 'solved'],
+    ['2301E', 'Lamps on a Ring', 'bitmasks, dp', 2400, 702, 'tried'],
+    ['2301D', 'Cheap Queries', 'data structures, divide and conquer', 2200, 1457],
+    ['2301C', 'Balanced Teams', 'binary search, greedy, two pointers', 1700, 7930, 'solved'],
+    ['2300F', 'Shortest Detour', 'graphs, shortest paths', 2400, 611],
+    ['2300D', 'Divisible Pairs', 'math, number theory', 1500, 12044, 'solved'],
+    ['2299E', 'Tree Coloring Queries', 'dfs and similar, trees', 2300, 988],
+    ['2299C', 'Minimum Excluded Path', 'constructive algorithms, graphs', 1600, 8317, 'tried'],
+    ['2298D', 'Equalize by Halving', 'brute force, greedy, math', 1300, 15402, 'solved'],
+    ['2298C', 'Matrix Walk', 'dp, implementation', 1200, 18870, 'solved'],
+    ['2297F', 'Interval Cover', 'data structures, greedy', 2000, 2604],
+    ['2297D', 'Weighted Digits', 'bitmasks, brute force', 1700, 6088],
+  ];
+  document.getElementById('rows').innerHTML = P.map(([id, name, tags, d, n, st]) => `
+    <tr class="${st || ''}">
+      <td>${st === 'solved' ? `<span class="st-ic ok" title="Solved">${ic.check}</span>` : st === 'tried' ? `<span class="st-ic rej" title="Attempted">${ic.cross}</span>` : ''}</td>
+      <td class="pid"><a href="problem.html">${id}</a></td>
+      <td class="pname"><a href="problem.html">${name}</a><div class="ptags">${tags.split(', ').map(t => `<a href="#">${t}</a>`).join(', ')}</div></td>
+      <td class="num dval" style="color:${colorVar(rankOf(d)[1])}">${d}</td>
+      <td class="num"><span class="solvedby">${ic.user}${n.toLocaleString('en-US')}</span></td>
+    </tr>`).join('');
+
+  // difficulty strip: one segment per 100 points, painted with the rating-graph band colors
+  const band = d => d >= 3000 ? 'lgm' : d >= 2600 ? 'igm' : d >= 2400 ? 'gm' : d >= 2300 ? 'im' : d >= 2100 ? 'master'
+    : d >= 1900 ? 'cm' : d >= 1600 ? 'expert' : d >= 1400 ? 'specialist' : d >= 1200 ? 'pupil' : 'newbie';
+  const from = 1200, to = 2400, segs = [];
+  for (let d = 800; d <= 3500; d += 100) segs.push(`<i class="${d < from || d > to ? 'off' : ''}" style="background:var(--band-${band(d)})" title="${d}"></i>`);
+  const pos = d => ((d - 800) / 100 / segs.length * 100).toFixed(2);
+  document.getElementById('dstrip').innerHTML =
+    `<div class="dstrip-segs">${segs.join('')}</div><span class="knob" style="left:${pos(from)}%"></span><span class="knob" style="left:${pos(to + 100)}%"></span>`;
+
+  const C = [['1200–1399', 1300, 168, 655], ['1400–1599', 1500, 178, 702], ['1600–1899', 1700, 267, 1054], ['1900–2099', 2000, 137, 618],
+             ['2100–2299', 2200, 95, 597], ['2300–2399', 2300, 31, 281], ['2400', 2400, 22, 236]];
+  document.getElementById('cov').innerHTML = C.map(([label, d, a, b]) => `
+    <span class="rng">${label}</span>
+    <span class="bar"><i style="width:${(a / b * 100).toFixed(1)}%;background:${colorVar(rankOf(d)[1])}"></i></span>
+    <span class="cnt">${a} / ${b.toLocaleString('en-US')}</span>`).join('');
+});
+</script>
+</body>
+</html>

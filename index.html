@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Codeforces</title>
+<link rel="stylesheet" href="assets/cf.css">
+<script src="assets/shell.js"></script>
+</head>
+<body data-page="home">
+<div id="top"></div>
+
+<main class="wrap page">
+  <div class="cols">
+    <div class="feed">
+      <nav class="feed-tabs" aria-label="Feed">
+        <a class="on" href="#">All posts</a>
+        <a href="#">Announcements</a>
+        <a href="#">Editorials</a>
+        <a href="#">Following</a>
+      </nav>
+
+      <article class="post">
+        <h2 class="post-title"><a href="#">Codeforces Round 1130 (Div. 1 + Div. 2)</a></h2>
+        <div class="post-meta">By <a class="u">kaleido</a>, 3 days ago <span class="sep">·</span> <span class="tag">Announcement</span></div>
+        <div class="prose">
+          <p>Hi, Codeforces!</p>
+          <p>On <a href="#">Oct/09/2026 17:35 (Moscow time)</a> we will host <a href="contests.html">Codeforces Round 1130 (Div. 1 + Div. 2)</a>. The round is combined and rated for all participants.</p>
+          <p>You will be given <b>8 problems</b> and <b>2 hours 30 minutes</b> to solve them. One of the problems is interactive, so please read the <a href="#">guide for interactive problems</a> if you are not familiar with them.</p>
+          <p>The problems were authored and prepared by <a class="u">kaleido</a> and <a class="u">shiomi</a>. Thanks to:</p>
+          <ul>
+            <li><a class="u">orbit</a> for coordinating the round and rejecting our favourite problem twice;</li>
+            <li><a class="u">wavelet</a>, <a class="u">bitsetter</a>, <a class="u">caramel_tea</a>, <a class="u">segtree_beats</a>, <a class="u">neon_tetra</a>, <a class="u">ricecake</a> and <a class="u">lemonade</a> for testing;</li>
+            <li><a class="u admin" href="#">MikeMirzayanov</a> for the great <a href="#">Codeforces</a> and <a href="#">Polygon</a> systems.</li>
+          </ul>
+          <p>Score distribution: <b class="tnum">250 – 500 – 1000 – 1500 – 2000 – 2500 – 3000 – 3500</b>.</p>
+          <p><b>UPD:</b> the editorial will be published right after system testing.</p>
+        </div>
+        <div class="post-foot">
+          <div class="vote"><button aria-label="Upvote" data-icon="up"></button><b class="pos">+412</b><button aria-label="Downvote" data-icon="down"></button></div>
+          <a href="#" data-icon="comment">389</a>
+          <div class="grow"><a href="contests.html">Announcement of Codeforces Round 1130 (Div. 1 + Div. 2)</a></div>
+          <a href="#">Full text and comments »</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <h2 class="post-title"><a href="#">Educational Codeforces Round 196 — Editorial</a></h2>
+        <div class="post-meta">By <a class="u">ternarysearch</a>, 2 days ago <span class="sep">·</span> <span class="tag">Editorial</span></div>
+        <div class="prose">
+          <p>Thank you for participating! Hints come before the tutorials, so open them one at a time if you want to keep thinking.</p>
+          <h4><a href="problemset.html">2304A — Odd One Out</a></h4>
+          <div class="spoilers">
+            <details class="spoiler"><summary>Hint 1</summary><div class="sp"><p>How many distinct values can the array contain?</p></div></details>
+            <details class="spoiler"><summary>Tutorial</summary><div class="sp"><p>Compare the first three elements to find the majority value, then scan for the element that differs.</p></div></details>
+            <details class="spoiler"><summary>Solution</summary><div class="sp"><p>O(n) per test case.</p></div></details>
+          </div>
+          <h4><a href="problemset.html">2304B — Monocarp and Coins</a></h4>
+          <div class="spoilers">
+            <details class="spoiler" open><summary>Hint 1</summary><div class="sp"><p>Look at the coins from the largest to the smallest. When is it never worse to take the current coin?</p></div></details>
+            <details class="spoiler"><summary>Hint 2</summary><div class="sp"><p>An exchange argument works here.</p></div></details>
+            <details class="spoiler"><summary>Tutorial</summary><div class="sp"><p>Sort, then take greedily.</p></div></details>
+          </div>
+          <p><a class="more" href="#">Full text and comments »</a></p>
+        </div>
+        <div class="post-foot">
+          <div class="vote"><button aria-label="Upvote" data-icon="up"></button><b class="pos">+187</b><button aria-label="Downvote" data-icon="down"></button></div>
+          <a href="#" data-icon="comment">96</a>
+          <div class="grow"><a href="contests.html">Tutorial of Educational Codeforces Round 196 (Rated for Div. 2)</a></div>
+          <a href="#">Full text and comments »</a>
+        </div>
+      </article>
+
+      <article class="post">
+        <h2 class="post-title"><a href="#">Iterating over submasks: why the total is O(3<sup>n</sup>)</a></h2>
+        <div class="post-meta">By <a class="u">dfs_tree</a>, 5 hours ago <span class="sep">·</span> <span class="tag">bitmasks</span> <span class="tag">tutorial</span></div>
+        <div class="prose">
+          <p>A short note, because I keep seeing this in my students' code. To process all pairs (mask, submask), people loop over all 2<sup>n</sup> values twice and check <code>(s &amp; mask) == s</code>. That is 4<sup>n</sup> iterations. The standard idiom:</p>
+<pre class="codeblock" data-code>for (int mask = 0; mask &lt; (1 &lt;&lt; n); mask++) {
+    for (int s = mask; s &gt; 0; s = (s - 1) &amp; mask) {
+        // s is a non-empty submask of mask
+    }
+}</pre>
+          <p>Every bit is in one of three states: not in <code>mask</code>, in <code>mask</code> but not in <code>s</code>, or in both. So the inner loop runs 3<sup>n</sup> times in total: for <i class="v">n</i> = 18 that is about 3.9·10<sup>8</sup> instead of 6.9·10<sup>10</sup>.</p>
+          <p><a class="more" href="#">Full text and comments »</a></p>
+        </div>
+        <div class="post-foot">
+          <div class="vote"><button aria-label="Upvote" data-icon="up"></button><b class="pos">+264</b><button aria-label="Downvote" data-icon="down"></button></div>
+          <a href="#" data-icon="comment">41</a>
+          <div class="grow"></div>
+          <a href="#">Full text and comments »</a>
+        </div>
+      </article>
+    </div>
+
+    <aside class="aside">
+      <section class="box">
+        <h3 class="cap">Pay attention</h3>
+        <div class="watch">
+          <div class="watch-k"><span class="dot"></span>Contest is running <span class="push tnum">21,348 participants</span></div>
+          <a class="watch-t" href="problem.html">Codeforces Round 1130 (Div. 1 + Div. 2)</a>
+          <div class="clock"><span data-left="4813">01:20:13</span><small>left</small></div>
+          <div class="bar"><i style="width:46.5%"></i></div>
+          <div class="watch-meta"><span>17:35</span><span>20:05</span></div>
+          <div class="watch-act"><a class="btn btn-p btn-sm" href="problem.html">Enter</a><a class="btn btn-sm" href="standings.html">Standings</a></div>
+        </div>
+        <div class="watch">
+          <div class="watch-k"><span class="dot y"></span>Before contest · 2 days</div>
+          <a class="watch-t" href="contests.html">Educational Codeforces Round 197 (Rated for Div. 2)</a>
+          <div class="watch-act"><a class="btn btn-sm" href="contests.html">Register »</a><span class="push tnum">Mon 17:35 · 9,814 registered</span></div>
+        </div>
+      </section>
+
+      <section class="box">
+        <h3 class="cap"><a class="u">lexmin</a></h3>
+        <div class="mebox">
+          <span class="ava" data-ava="lexmin"></span>
+          <div class="mebox-stats">Rating <b>2187</b><br>Contribution <b>+24</b></div>
+        </div>
+        <div class="melinks">
+          <a href="#">Settings</a><a href="#">Blog</a><a href="#">Favourites</a><a href="#">Teams</a>
+          <a href="#">Submissions</a><a href="#">Groups</a><a href="#">Talks</a><a href="contests.html">Contests</a>
+        </div>
+      </section>
+
+      <section class="box">
+        <h3 class="cap">Top rated</h3>
+        <table class="tbl compact">
+          <thead><tr><th class="num">#</th><th>User</th><th class="num">Rating</th></tr></thead>
+          <tbody>
+            <tr><td class="num muted">1</td><td><a class="u">obsidian</a></td><td class="num">3812</td></tr>
+            <tr><td class="num muted">2</td><td><a class="u">kaleido</a></td><td class="num">3694</td></tr>
+            <tr><td class="num muted">3</td><td><a class="u">mod998244353</a></td><td class="num">3640</td></tr>
+            <tr><td class="num muted">4</td><td><a class="u">noriko</a></td><td class="num">3591</td></tr>
+            <tr><td class="num muted">5</td><td><a class="u">eulertour</a></td><td class="num">3528</td></tr>
+            <tr><td class="num muted">6</td><td><a class="u">petrichor</a></td><td class="num">3477</td></tr>
+            <tr><td class="num muted">7</td><td><a class="u">lattice</a></td><td class="num">3410</td></tr>
+            <tr><td class="num muted">8</td><td><a class="u">frostbyte</a></td><td class="num">3389</td></tr>
+            <tr><td class="num muted">9</td><td><a class="u">shiomi</a></td><td class="num">3356</td></tr>
+            <tr><td class="num muted">10</td><td><a class="u">graphite</a></td><td class="num">3302</td></tr>
+          </tbody>
+        </table>
+        <div class="box-foot"><a href="#">Countries</a><a href="#">Cities</a><a href="#">Organizations</a><a class="push" href="#">View all »</a></div>
+      </section>
+
+      <section class="box">
+        <h3 class="cap">Top contributors</h3>
+        <table class="tbl compact">
+          <thead><tr><th class="num">#</th><th>User</th><th class="num">Contrib.</th></tr></thead>
+          <tbody>
+            <tr><td class="num muted">1</td><td><a class="u">ternarysearch</a></td><td class="num">186</td></tr>
+            <tr><td class="num muted">2</td><td><a class="u">kaleido</a></td><td class="num">171</td></tr>
+            <tr><td class="num muted">3</td><td><a class="u">orbit</a></td><td class="num">164</td></tr>
+            <tr><td class="num muted">4</td><td><a class="u">segtree_beats</a></td><td class="num">152</td></tr>
+            <tr><td class="num muted">5</td><td><a class="u">dfs_tree</a></td><td class="num">149</td></tr>
+            <tr><td class="num muted">6</td><td><a class="u">wavelet</a></td><td class="num">141</td></tr>
+            <tr><td class="num muted">7</td><td><a class="u">neon_tetra</a></td><td class="num">137</td></tr>
+            <tr><td class="num muted">8</td><td><a class="u">nanami</a></td><td class="num">133</td></tr>
+            <tr><td class="num muted">9</td><td><a class="u">aurora_b</a></td><td class="num">128</td></tr>
+            <tr><td class="num muted">10</td><td><a class="u">hexagon</a></td><td class="num">124</td></tr>
+          </tbody>
+        </table>
+        <div class="box-foot"><a class="push" href="#">View all »</a></div>
+      </section>
+
+      <section class="box">
+        <h3 class="cap">Find user</h3>
+        <form class="find" onsubmit="return false"><input class="input" placeholder="Handle" aria-label="Handle"><button class="btn">Find</button></form>
+      </section>
+
+      <section class="box">
+        <h3 class="cap">Recent actions</h3>
+        <ul class="ra">
+          <li><a class="u">obsidian</a><span class="ar"></span><a href="#">Codeforces Round 1130 (Div. 1 + Div. 2)</a></li>
+          <li><a class="u">dfs_tree</a><span class="ar"></span><a href="#">Iterating over submasks: why the total is O(3<sup>n</sup>)</a></li>
+          <li><a class="u">ricecake</a><span class="ar"></span><a href="#">How do I stop failing system tests on B?</a></li>
+          <li><a class="u">ternarysearch</a><span class="ar"></span><a href="#">Educational Codeforces Round 196 — Editorial</a></li>
+          <li><a class="u">hexagon</a><span class="ar"></span><a href="#">ICPC 2027 Northern Eurasia Finals: list of teams</a></li>
+          <li><a class="u">quietstorm</a><span class="ar"></span><a href="#">Is FFT worth learning before Expert?</a></li>
+          <li><a class="u">neon_tetra</a><span class="ar"></span><a href="#">Video solutions for Round 1129</a></li>
+          <li><a class="u">fenwick</a><span class="ar"></span><a href="#">Petrozavodsk camp, day 3 mirror in Gym</a></li>
+        </ul>
+        <div class="box-foot"><a class="push" href="#">Detailed »</a></div>
+      </section>
+    </aside>
+  </div>
+</main>
+
+<div id="bottom"></div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+Reddit gallery captions, in posting order (one caption per image).
+
+01-problem.png
+Problem page: statement on the left, editor on the right. Problem tiles show what you have solved, the contest timer is always in view.
+
+02-run-fix-submit.png
+Run the examples before you submit. A wrong answer shows expected vs found line by line; fix it, run again, submit, and watch it reach "Pretests passed".
+
+03-standings.png
+Standings: your row is pinned on top, the header and handles stay put while you scroll, each problem shows accepted / tried, and Δ predicts your rating change.
+
+04-home.png
+Home is still the blog. The running round and its timer live in the header and the sidebar; editorials keep hints behind spoilers.
+
+05-search.png
+Ctrl+K searches everything: problems by name or ID, tags, people, blog posts and contests.
+
+06-problemset.png
+Problemset keeps the green and pink rows. The difficulty filter is a strip of rating-band colors, and the sidebar shows your coverage in the selected range.
+
+07-profile.png
+Profile: the rating graph on its colored bands with hover details, progress to the next rank, an activity heatmap with streaks, solved by difficulty.
+
+08-contests.png
+Contests: your rank and rating change next to every past contest, and a calendar where contest types use the three logo colors.
+
+09-problem-dark.png
+Dark mode, with rank colors lifted so every handle stays readable.
+
+10-profile-dark.png
+The rating graph in dark mode.
+
+11-mobile.png
+And it works on a phone.

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>lexmin — Codeforces</title>
+<link rel="stylesheet" href="assets/cf.css">
+<script src="assets/shell.js"></script>
+</head>
+<body data-page="profile">
+<div id="top"></div>
+
+<main class="wrap page">
+  <section class="pf-head">
+    <div class="pf-main">
+      <div class="pf-rank r-master">Master</div>
+      <h1 class="pf-handle r-master">lexmin</h1>
+      <div class="pf-name">Alexey Minin, Kazan, Russia<br>ITMO University</div>
+      <nav class="pf-links">
+        <a href="#">Blog entries (4)</a><a href="#">Comments</a><a href="#">Submissions</a><a href="#">Talks</a>
+        <a href="contests.html">Contests (65)</a><a href="#">Favourites</a><a href="#">Settings</a>
+      </nav>
+    </div>
+    <div class="pf-facts">
+      <dl class="facts">
+        <dt>Contest rating</dt><dd><b class="r-master tnum">2187</b> <span class="muted">(max. <span class="r-master">master</span>, <b class="r-master tnum">2213</b>)</span></dd>
+        <dt>Contribution</dt><dd><b class="pos">+24</b></dd>
+        <dt>Friend of</dt><dd>312 users</dd>
+        <dt>Last visit</dt><dd><span class="ok">online now</span></dd>
+        <dt>Registered</dt><dd>6 years ago</dd>
+      </dl>
+      <div class="next-rank">
+        <div class="nr-top"><span>Next rank: <b class="r-im">International Master</b></span><span class="tnum">113 to go</span></div>
+        <div class="bar"><i style="width:43.5%;background:var(--r-master)"></i></div>
+        <div class="nr-scale tnum"><span>2100</span><span>2300</span></div>
+      </div>
+    </div>
+    <div class="ava-col">
+      <span class="ava ava-big" data-ava="lexmin"></span>
+      <div class="ava-cap"><a href="#">Change photo</a></div>
+    </div>
+  </section>
+
+  <section class="box" style="margin-top:16px">
+    <h2 class="cap">Rating
+      <span class="cap-x chart-tools">
+        <span class="seg" id="range"><button data-r="all" class="on">All time</button><button data-r="3">3 years</button><button data-r="1">1 year</button></span>
+      </span>
+    </h2>
+    <div class="box-body"><div class="chart" id="rating"><div class="tip" id="rating-tip"></div></div></div>
+  </section>
+
+  <section class="box" style="margin-top:16px">
+    <h2 class="cap">Activity <span class="cap-x tnum">1,342 problems solved for all time</span></h2>
+    <div class="heat-wrap">
+      <div>
+        <div class="chart" id="heat"><div class="tip" id="heat-tip"></div></div>
+        <div class="heat-legend">Less <i style="background:var(--heat-0)"></i><i style="background:var(--heat-1)"></i><i style="background:var(--heat-2)"></i><i style="background:var(--heat-3)"></i><i style="background:var(--heat-4)"></i> More</div>
+      </div>
+      <div class="streaks" id="streaks"></div>
+    </div>
+  </section>
+
+  <div class="pf-grid2" style="margin-top:16px">
+    <section class="box">
+      <h2 class="cap">Solved by difficulty <span class="cap-x tnum" id="rated-count"></span></h2>
+      <div class="box-body"><div class="chart" id="diff"><div class="tip" id="diff-tip"></div></div></div>
+    </section>
+    <section class="box">
+      <h2 class="cap">Recent contests <a class="cap-x" href="contests.html">All 65 »</a></h2>
+      <table class="tbl">
+        <thead><tr><th>Contest</th><th class="num">Rank</th><th class="num">Change</th><th class="num">Rating</th></tr></thead>
+        <tbody id="recent"></tbody>
+      </table>
+    </section>
+  </div>
+</main>
+
+<div id="bottom"></div>
+<script src="assets/profile.js"></script>
+</body>
+</html>

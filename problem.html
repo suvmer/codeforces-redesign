@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C. Paper Planes — Codeforces Round 1130</title>
+<link rel="stylesheet" href="assets/cf.css">
+<script src="assets/shell.js"></script>
+</head>
+<body data-page="contests" data-live="off">
+<div id="top"></div>
+
+<section class="cbar"><div class="wrap">
+  <div class="cbar-top">
+    <h1 class="cbar-name"><a href="contests.html">Codeforces Round 1130 (Div. 1 + Div. 2)</a></h1>
+    <div class="phase">
+      <span>Contest is running</span>
+      <span class="bar"><i style="width:46.5%"></i></span>
+      <b data-left="4813">01:20:13</b>
+    </div>
+  </div>
+  <nav class="subnav" aria-label="Contest">
+    <a class="on" href="problem.html">Problems</a>
+    <a href="#">Submit code</a>
+    <a href="#">My submissions</a>
+    <a href="#">Status</a>
+    <a href="standings.html">Standings</a>
+    <a href="#">Custom test</a>
+    <span class="meta">Rated · 21,348 participants · pretests until 20:05</span>
+  </nav>
+</div></section>
+
+<main class="wrap page" style="padding-top:0">
+  <nav class="pstrip" aria-label="Problems">
+    <a class="solved" href="#" title="A. Odd Socks — pretests passed"><b>A</b><small>250</small></a>
+    <a class="solved" href="#" title="B. Coin Towers — pretests passed"><b>B</b><small>500</small></a>
+    <a class="tried on" id="tile-c" href="#" aria-current="page" title="C. Paper Planes — 1 rejected attempt"><b>C</b><small>1000</small></a>
+    <a href="#" title="D. Interactive Lighthouse"><b>D</b><small>1500</small></a>
+    <a href="#" title="E. Bridges and Tolls"><b>E</b><small>2000</small></a>
+    <a href="#" title="F. Counting Palindromic Cuts"><b>F</b><small>2500</small></a>
+    <a href="#" title="G. Persistent Forest"><b>G</b><small>3000</small></a>
+    <a href="#" title="H. Space Telegraph"><b>H</b><small>3500</small></a>
+    <span class="note tnum" id="pnote">2 of 8 solved · 698 points · rank 7,804</span>
+  </nav>
+
+  <div class="pgrid">
+    <article class="statement">
+      <div class="p-headline">
+        <h2 class="p-title">C. Paper Planes</h2>
+        <div class="p-actions">
+          <button class="btn btn-ghost btn-sm" data-icon="star">Favourite</button>
+          <button class="btn btn-ghost btn-sm" data-icon="print">Print</button>
+          <div class="seg"><button class="on">EN</button><button>RU</button></div>
+        </div>
+      </div>
+      <div class="limits">
+        <span>time limit per test <b>2 seconds</b></span>
+        <span>memory limit per test <b>256 megabytes</b></span>
+        <span>input / output <b>standard</b></span>
+      </div>
+
+      <div class="prose">
+        <p>Monocarp has folded <i class="v">n</i> paper planes. The <i class="v">i</i>-th of them flies exactly <span class="mx"><i>a</i><sub><i>i</i></sub></span> meters.</p>
+        <p>He is going to launch all <i class="v">n</i> planes from the roof, one after another, in any order he likes. A launch is <b>spectacular</b> if the plane lands strictly farther than every plane launched before it. In particular, the first launch is always spectacular.</p>
+        <p>Before the launches, Monocarp may refold planes. To refold a plane with range <span class="mx"><i>x</i> ≥ 2</span>, he folds it once more, and its range becomes <span class="mx">⌊<i>x</i> / 2⌋</span>. A plane can be refolded any number of times.</p>
+        <p>What is the maximum number of spectacular launches Monocarp can get?</p>
+      </div>
+
+      <h3 class="sec-h">Input</h3>
+      <div class="prose">
+        <p>Each test contains multiple test cases. The first line contains the number of test cases <i class="v">t</i> (<span class="mx">1 ≤ <i>t</i> ≤ 10<sup>4</sup></span>). The description of the test cases follows.</p>
+        <p>The first line of each test case contains a single integer <i class="v">n</i> (<span class="mx">1 ≤ <i>n</i> ≤ 2·10<sup>5</sup></span>) — the number of planes.</p>
+        <p>The second line contains <i class="v">n</i> integers <span class="mx"><i>a</i><sub>1</sub>, <i>a</i><sub>2</sub>, …, <i>a</i><sub><i>n</i></sub></span> (<span class="mx">1 ≤ <i>a</i><sub><i>i</i></sub> ≤ 10<sup>9</sup></span>) — the ranges of the planes.</p>
+        <p>It is guaranteed that the sum of <i class="v">n</i> over all test cases does not exceed <span class="mx">2·10<sup>5</sup></span>.</p>
+      </div>
+
+      <h3 class="sec-h">Output</h3>
+      <div class="prose"><p>For each test case, print a single integer — the maximum number of spectacular launches.</p></div>
+
+      <h3 class="sec-h">Examples</h3>
+      <div class="ex">
+        <div class="ex-col">
+          <div class="ex-h">Input <button class="copy" data-copy="ex1-in" data-icon="copy"><b>Copy</b></button></div>
+          <pre id="ex1-in"><span>3</span><span class="alt">5</span><span class="alt">2 2 2 5 9</span><span>4</span><span>3 3 3 3</span><span class="alt">6</span><span class="alt">7 7 6 6 2 2</span></pre>
+        </div>
+        <div class="ex-col">
+          <div class="ex-h">Output <button class="copy" data-copy="ex1-out" data-icon="copy"><b>Copy</b></button></div>
+          <pre id="ex1-out"><span class="alt">4</span><span>2</span><span class="alt">5</span></pre>
+        </div>
+      </div>
+      <div class="ex">
+        <div class="ex-col">
+          <div class="ex-h">Input <button class="copy" data-copy="ex2-in" data-icon="copy"><b>Copy</b></button></div>
+          <pre id="ex2-in"><span>2</span><span class="alt">3</span><span class="alt">1000000000 1000000000 1000000000</span><span>1</span><span>1</span></pre>
+        </div>
+        <div class="ex-col">
+          <div class="ex-h">Output <button class="copy" data-copy="ex2-out" data-icon="copy"><b>Copy</b></button></div>
+          <pre id="ex2-out"><span class="alt">3</span><span>1</span></pre>
+        </div>
+      </div>
+
+      <h3 class="sec-h">Note</h3>
+      <div class="prose">
+        <p>In the first test case, Monocarp can refold one of the planes with range 2. The ranges become [2, 1, 2, 5, 9], and if he launches the planes in the order 1, 2, 5, 9, 2, the first four launches are spectacular. Three planes of range 2 can only end up with ranges 2 and 1, so five spectacular launches are impossible.</p>
+        <p>In the second test case, every range can only become 3 or 1, so the answer is 2.</p>
+      </div>
+
+      <div class="p-nav"><a href="#">« B. Coin Towers</a><a href="#">D. Interactive Lighthouse »</a></div>
+    </article>
+
+    <div class="side">
+      <section class="ed">
+        <div class="ed-top"><span class="t">Submit</span><div class="seg push"><button class="on">Editor</button><button>File</button></div></div>
+        <div class="ed-opts">
+          <select class="select" aria-label="Language"><option>GNU G++23 14.2 (64 bit, msys2)</option><option>Python 3.13</option><option>Rust 1.89 (2024)</option></select>
+          <select class="select" style="width:150px" aria-label="Problem"><option>C. Paper Planes</option></select>
+        </div>
+        <div class="code"><div class="ln" id="ln"></div><pre id="src" data-code contenteditable="plaintext-only" spellcheck="false" aria-label="Source code">#include &lt;bits/stdc++.h&gt;
+using namespace std;
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+    int t;
+    cin &gt;&gt; t;
+    while (t--) {
+        int n;
+        cin &gt;&gt; n;
+        vector&lt;int&gt; a(n);
+        for (auto &amp;x : a) cin &gt;&gt; x;
+        sort(a.rbegin(), a.rend());
+
+        set&lt;int&gt; used;
+        int ans = 0;
+        for (int x : a) {
+            while (x &gt; 0 &amp;&amp; used.count(x)) x /= 2;
+            if (!used.count(x)) {
+                used.insert(x);
+                ans++;
+            }
+        }
+        cout &lt;&lt; ans &lt;&lt; '\n';
+    }
+}</pre></div>
+        <div class="ed-act">
+          <button class="btn" id="run" data-icon="play">Run examples <kbd>Alt</kbd><kbd>R</kbd></button>
+          <button class="btn btn-p push" id="submit">Submit <kbd>Ctrl</kbd><kbd>Enter</kbd></button>
+        </div>
+        <div class="runs" id="runs" aria-live="polite"></div>
+      </section>
+
+      <section class="box">
+        <h3 class="cap">My submissions <a class="cap-x" href="#">All »</a></h3>
+        <table class="subs"><tbody id="subs">
+          <tr><td class="tm">18:24</td><td class="pl">C</td><td class="res"><span class="rej">Time limit exceeded on pretest 3</span></td><td class="rt">2000 ms</td></tr>
+          <tr><td class="tm">17:58</td><td class="pl">B</td><td class="res"><span class="ok">Pretests passed</span></td><td class="rt">62 ms</td></tr>
+          <tr><td class="tm">17:41</td><td class="pl">A</td><td class="res"><span class="ok">Pretests passed</span></td><td class="rt">15 ms</td></tr>
+        </tbody></table>
+      </section>
+
+      <section class="box">
+        <h3 class="cap">Jury announcements</h3>
+        <div class="jury"><time>18:12</time>Problem E: it is guaranteed that the given graph is connected.</div>
+        <div class="jury"><time>17:52</time>Problem C: a plane with range 1 cannot be refolded. The statement requires <span class="mx"><i>x</i> ≥ 2</span>.</div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<div id="bottom"></div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const { ic, hl, NOW, pad, still } = CF;
+  const src = document.getElementById('src');
+  const ln = document.getElementById('ln');
+  const runsEl = document.getElementById('runs');
+  const subs = document.getElementById('subs');
+  const tile = document.getElementById('tile-c');
+  const note = document.getElementById('pnote');
+  const ORIGINAL = src.textContent.split('\n');
+  const loadedAt = Date.now();
+
+  // line numbers; lines changed since the page loaded get a bar in the gutter
+  const gutter = () => {
+    const lines = src.textContent.split('\n');
+    ln.innerHTML = lines.map((l, i) => `<span${l !== ORIGINAL[i] ? ' class="chg"' : ''}>${i + 1}</span>`).join('');
+  };
+  gutter();
+  src.addEventListener('input', gutter);
+  src.addEventListener('blur', () => { src.innerHTML = hl(src.textContent).join('\n'); gutter(); });
+
+  // the demo judge understands one thing: the loop bound in the sample solution
+  const bound = () => {
+    const m = src.textContent.match(/while\s*\(\s*x\s*>\s*(\d+)\s*&&\s*used\.count\(\s*x\s*\)\s*\)\s*x\s*\/=\s*2\s*;/);
+    return m ? +m[1] : null;
+  };
+  const solve = (arr, k) => {
+    const a = [...arr].sort((p, q) => q - p);
+    const used = new Set();
+    let ans = 0;
+    for (let x of a) {
+      while (x > k && used.has(x)) x = Math.floor(x / 2);
+      if (!used.has(x)) { used.add(x); ans++; }
+    }
+    return ans;
+  };
+  const EXAMPLES = [
+    { tests: [[2, 2, 2, 5, 9], [3, 3, 3, 3], [7, 7, 6, 6, 2, 2]], out: [4, 2, 5], ms: 15 },
+    { tests: [[1e9, 1e9, 1e9], [1]], out: [3, 1], ms: 15 },
+  ];
+  const judge = k => EXAMPLES.map(ex => {
+    const found = ex.tests.map(a => solve(a, k));
+    return { ...ex, found, ok: found.every((v, i) => v === ex.out[i]) };
+  });
+
+  const renderRuns = (results, when) => {
+    const failed = results.filter(r => !r.ok).length;
+    runsEl.innerHTML = `<div class="runs-h"><span>Examples, ${when}</span><span class="tnum">${failed ? `${failed} of ${results.length} failed` : 'all passed'}</span></div>`
+      + results.map((r, i) => r.ok
+        ? `<div class="run"><span class="st-ic ok">${ic.check}</span><div><span class="ok">Passed</span> <span class="soft">example ${i + 1}</span></div><span class="tm">${r.ms} ms</span></div>`
+        : `<div class="run"><span class="st-ic rej">${ic.cross}</span><div><span class="rej">Wrong answer</span> <span class="soft">on example ${i + 1}</span></div><span class="tm">${r.ms} ms</span>
+            <div class="diff"><div class="h n">Line</div><div class="h">Expected</div><div class="h">Found</div>${r.out.map((v, j) => {
+              const bad = v !== r.found[j] ? 'bad' : '';
+              return `<div class="n ${bad}">${j + 1}</div><div class="${bad}">${v}</div><div class="${bad}">${r.found[j]}</div>`;
+            }).join('')}</div></div>`).join('');
+  };
+  renderRuns(judge(0), 'run 40 seconds ago');
+
+  const run = () => {
+    runsEl.classList.add('busy');
+    setTimeout(() => {
+      runsEl.classList.remove('busy');
+      const k = bound();
+      if (k == null) {
+        runsEl.innerHTML = `<div class="runs-h"><span>Examples, run just now</span></div><div class="run"><span class="st-ic rej">${ic.cross}</span><div><span class="rej">Compilation error</span> <span class="soft">· the demo judge only runs the sample solution</span></div><span></span></div>`;
+      } else {
+        renderRuns(judge(k), 'run just now');
+      }
+    }, 450);
+  };
+
+  let testing = false;
+  const submit = () => {
+    if (testing) return;
+    testing = true;
+    const k = bound();
+    const fails = k == null || judge(k).some(r => !r.ok);
+    const d = new Date(NOW + (still ? 0 : Date.now() - loadedAt) + 3 * 3600e3);
+    const tr = document.createElement('tr');
+    tr.className = 'new';
+    tr.innerHTML = `<td class="tm">${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}</td><td class="pl">C</td><td class="res"><span class="wait">In queue</span></td><td class="rt"></td>`;
+    subs.prepend(tr);
+    const res = tr.querySelector('.res');
+    const rt = tr.querySelector('.rt');
+    const TOTAL = 14;
+    let n = 0;
+    const step = () => {
+      n++;
+      if (k == null) { res.innerHTML = '<span class="rej">Compilation error</span>'; testing = false; return; }
+      if (fails) { res.innerHTML = '<span class="rej">Wrong answer on pretest 1</span>'; rt.textContent = '15 ms'; testing = false; return; }
+      if (n > TOTAL) {
+        res.innerHTML = '<span class="ok">Pretests passed</span>';
+        rt.textContent = '46 ms';
+        tile.classList.replace('tried', 'solved');
+        tile.title = 'C. Paper Planes — pretests passed';
+        note.textContent = '3 of 8 solved · 1,368 points · rank 4,206';
+        testing = false;
+        return;
+      }
+      res.innerHTML = `<span class="wait">Running on pretest ${n}</span><span class="tprog"><i style="width:${Math.round(n / TOTAL * 100)}%"></i></span>`;
+      setTimeout(step, 420);
+    };
+    setTimeout(step, 600);
+  };
+
+  document.getElementById('run').addEventListener('click', run);
+  document.getElementById('submit').addEventListener('click', submit);
+  document.addEventListener('keydown', e => {
+    if (e.altKey && e.code === 'KeyR') { e.preventDefault(); run(); }
+    if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') { e.preventDefault(); submit(); }
+  });
+});
+</script>
+</body>
+</html>

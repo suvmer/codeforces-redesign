@@ -4,11 +4,11 @@
 
 An unofficial, fan-made redesign of Codeforces: the same contests, the same rank colors and the same dense tables, with a modern interface. It is a static, clickable prototype with no build step and no backend.
 
+**Promo video, 30 seconds:** [promo/codeforces-redesign-concept.mp4](https://suvmer.github.io/codeforces-redesign/promo/codeforces-redesign-concept.mp4)
+
 Concept by [suvmer.dev](https://suvmer.dev).
 
 ![Problem page](screenshots/01-problem.png)
-
-**Promo, 30 seconds:** [promo/codeforces-redesign-concept.mp4](promo/codeforces-redesign-concept.mp4)
 
 ## Try it
 
